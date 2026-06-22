@@ -1,0 +1,6 @@
+{
+  "name": "Vicell",
+  "description": "Aplicación de administración y control de finanzas para el taller de reparaciones VICELL.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

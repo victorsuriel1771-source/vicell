@@ -1,0 +1,487 @@
+@import "tailwindcss";
+
+@theme {
+  --font-headline: "Hanken Grotesk", sans-serif;
+  --font-sans: "Inter", sans-serif;
+  
+  --color-surface-container-highest: #cbd5e1;
+  --color-secondary-fixed-dim: #2563eb;
+  --color-error: #ef4444;
+  --color-tertiary-fixed: #e2e8f0;
+  --color-on-secondary-container: #1e3a8a;
+  --color-on-surface: #0f172a;
+  --color-secondary-fixed: #3b82f6;
+  --color-on-tertiary-fixed: #0f172a;
+  --color-on-error-container: #991b1b;
+  --color-primary: #3b82f6;
+  --color-tertiary: #64748b;
+  --color-on-primary-fixed-variant: #1d4ed8;
+  --color-outline-variant: #e2e8f0;
+  --color-surface-container-lowest: #f8fafc;
+  --color-tertiary-fixed-dim: #cbd5e1;
+  --color-on-primary-fixed: #1e3a8a;
+  --color-on-primary: #ffffff;
+  --color-inverse-surface: #0f172a;
+  --color-inverse-primary: #2563eb;
+  --color-error-container: #fee2e2;
+  --color-on-tertiary: #0f172a;
+  --color-secondary-container: #eff6ff;
+  --color-surface: #f1f5f9;
+  --color-surface-container-high: #f8fafc;
+  --color-surface-bright: #ffffff;
+  --color-primary-container: #3b82f6;
+  --color-primary-fixed: #dbeafe;
+  --color-on-primary-container: #ffffff;
+  --color-on-secondary-fixed: #1e3b8a;
+  --color-on-background: #0f172a;
+  --color-on-surface-variant: #475569;
+  --color-on-secondary-fixed-variant: #1d4ed8;
+  --color-on-secondary: #ffffff;
+  --color-surface-container: #ffffff;
+  --color-surface-container-low: #f8fafc;
+  --color-surface-dim: #f1f5f9;
+  --color-surface-variant: #f1f5f9;
+  --color-primary-fixed-dim: #3b82f6;
+  --color-outline: #cbd5e1;
+  --color-surface-tint: #2563eb;
+  --color-inverse-on-surface: #ffffff;
+  --color-tertiary-container: #cbd5e1;
+  --color-on-error: #ffffff;
+  --color-secondary: #4f46e5;
+  --color-background: #f1f5f9;
+  --color-on-tertiary-container: #0f172a;
+  --color-on-tertiary-fixed-variant: #475569;
+}
+
+@utility glass-panel {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03), 0 4px 12px rgba(15, 23, 42, 0.015);
+  border-radius: 1.5rem; /* rounded-3xl */
+  transform: translateZ(0);
+}
+
+@utility glass-input {
+  background-color: #f8fafc;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.02);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@utility glow-border-primary {
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.1), 0 4px 12px rgba(59, 130, 246, 0.03);
+}
+
+@utility glow-border-secondary {
+  box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.1), 0 4px 12px rgba(79, 70, 229, 0.03);
+}
+
+@utility bloom-primary {
+  box-shadow: 0 8px 16px -4px rgba(59, 130, 246, 0.15);
+}
+
+@utility bloom-secondary {
+  box-shadow: 0 8px 16px -4px rgba(79, 70, 229, 0.15);
+}
+
+@utility bloom-success {
+  box-shadow: 0 8px 16px -4px rgba(16, 185, 129, 0.1);
+}
+
+@utility bloom-warning {
+  box-shadow: 0 8px 16px -4px rgba(245, 158, 11, 0.1);
+}
+
+@utility bloom-error {
+  box-shadow: 0 8px 16px -4px rgba(239, 68, 68, 0.1);
+}
+
+body {
+  background-color: #f1f5f9;
+  background-image: radial-gradient(#e2e8f0 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+  min-height: 100vh;
+  color: #0f172a;
+}
+
+/* --- Bento Grid Structural Theme Rules --- */
+
+/* Force light surface elements inside glass-panel */
+.glass-panel {
+  color: #0f172a !important;
+}
+
+/* Correct card items heading texts */
+.glass-panel h1,
+.glass-panel h2,
+.glass-panel h3,
+.glass-panel h4,
+.glass-panel h5,
+.glass-panel .font-headline,
+.glass-panel .text-white {
+  color: #0f172a !important;
+}
+
+/* Preserve original brand colors where useful (e.g. status details, soft tags) */
+.glass-panel p,
+.glass-panel .text-on-surface-variant {
+  color: #475569 !important;
+}
+
+/* SPECIFIC Bento Slate-900 Block styles for visual rhythm */
+#orders-summary-section > div {
+  background: #0f172a !important;
+  border: 1px solid #1e293b !important;
+  color: #ffffff !important;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15) !important;
+}
+#orders-summary-section > div h3,
+#orders-summary-section > div .text-white,
+#orders-summary-section > div span,
+#orders-summary-section > div div {
+  color: #ffffff !important;
+}
+#orders-summary-section > div p,
+#orders-summary-section > div .text-on-surface-variant {
+  color: #94a3b8 !important;
+}
+
+/* SPECIFIC Bento Indigo-Purple Gradient Hero Block */
+#profit-hero-section > div,
+#expenses-hero-card {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
+  border: none !important;
+  box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.25) !important;
+}
+#profit-hero-section > div h3,
+#profit-hero-section > div span,
+#profit-hero-section > div p,
+#profit-hero-section > div div,
+#expenses-hero-card h3,
+#expenses-hero-card div,
+#expenses-hero-card span {
+  color: #ffffff !important;
+}
+#profit-hero-section > div .text-on-surface-variant,
+#expenses-hero-card .text-on-surface-variant {
+  color: #e0e7ff !important;
+}
+#profit-hero-section > div .bg-surface-container-highest,
+#expenses-hero-card .bg-error-container\/30 {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+#expenses-hero-card .text-error {
+  color: #fca5a5 !important;
+}
+
+/* Style modal inputs and content for premium white layouts */
+div.fixed.inset-0.bg-black\/60 {
+  backdrop-filter: blur(8px) !important;
+}
+
+div.fixed.inset-0.bg-black\/60 .bg-surface {
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #0f172a !important;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25) !important;
+}
+
+div.fixed.inset-0.bg-black\/60 .bg-surface h3,
+div.fixed.inset-0.bg-black\/60 .bg-surface label,
+div.fixed.inset-0.bg-black\/60 .bg-surface select,
+div.fixed.inset-0.bg-black\/60 .bg-surface input,
+div.fixed.inset-0.bg-black\/60 .bg-surface textarea {
+  color: #0f172a !important;
+}
+
+div.fixed.inset-0.bg-black\/60 .text-on-surface-variant {
+  color: #475569 !important;
+}
+
+div.fixed.inset-0.bg-black\/60 select {
+  border-color: #cbd5e1 !important;
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+/* Global button corrections to match clean Stratos design */
+button.cursor-pointer, button[type="submit"] {
+  transition: all 0.2s ease !important;
+}
+
+/* Scrollbar customization */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+/* ==========================================================================
+   === PRISTINE DARK MODE STYLESHEET OVERRIDES ===
+   ========================================================================== */
+
+.dark body {
+  background-color: #0b0f19 !important;
+  background-image: radial-gradient(#1e293b 1.2px, transparent 1.2px) !important;
+  color: #f1f5f9 !important;
+}
+
+/* Glass panel and overall containers dark style */
+.dark .glass-panel {
+  background-color: #111827 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Headings and generic texts in dark mode */
+.dark .glass-panel h1,
+.dark .glass-panel h2,
+.dark .glass-panel h3,
+.dark .glass-panel h4,
+.dark .glass-panel h5,
+.dark .glass-panel .font-headline,
+.dark .glass-panel .text-white,
+.dark .glass-panel .text-slate-900,
+.dark .glass-panel select,
+.dark .glass-panel input {
+  color: #ffffff !important;
+}
+
+.dark .glass-panel p,
+.dark .glass-panel .text-on-surface-variant,
+.dark .glass-panel .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+.dark .glass-panel .text-slate-700 {
+  color: #cbd5e1 !important;
+}
+
+/* Inputs and interactive items */
+.dark .glass-input {
+  background-color: #1f2937 !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+}
+
+.dark .glass-input::placeholder {
+  color: #6b7280 !important;
+}
+
+.dark .glass-input:focus {
+  border-color: #3b82f6 !important;
+  outline: none;
+}
+
+/* Top Navigation Bar */
+.dark header.fixed.top-0 {
+  background-color: rgba(11, 15, 25, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+}
+
+.dark header.fixed.top-0 .text-slate-900 {
+  color: #ffffff !important;
+}
+
+.dark header.fixed.top-0 button {
+  color: #94a3b8 !important;
+}
+
+.dark header.fixed.top-0 button:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: #ffffff !important;
+}
+
+/* Sidebar and Mobile Tab bars overrides */
+.dark aside.hidden.md:flex {
+  background-color: rgba(11, 15, 25, 0.7) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.dark aside.hidden.md:flex button {
+  color: #94a3b8 !important;
+}
+
+.dark aside.hidden.md:flex button:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.dark aside.hidden.md:flex button.text-indigo-600 {
+  background-color: rgba(99, 102, 241, 0.15) !important;
+  border-color: rgba(99, 102, 241, 0.3) !important;
+  color: #818cf8 !important;
+}
+
+.dark #bottom-navbar {
+  background-color: rgba(11, 15, 25, 0.85) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+.dark #bottom-navbar button {
+  color: #94a3b8 !important;
+}
+
+.dark #bottom-navbar button.text-indigo-600 {
+  color: #818cf8 !important;
+}
+
+/* System Modals in dark mode */
+.dark div.fixed.inset-0.bg-black\/60 {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+.dark div.fixed.inset-0.bg-black\/60 .bg-surface,
+.dark div.fixed.inset-0.bg-slate-950\/85 .bg-slate-900 {
+  background-color: #111827 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+.dark div.fixed.inset-0.bg-black\/60 .bg-surface h3,
+.dark div.fixed.inset-0.bg-black\/60 .bg-surface label,
+.dark div.fixed.inset-0.bg-black\/60 .bg-surface select,
+.dark div.fixed.inset-0.bg-black\/60 .bg-surface input,
+.dark div.fixed.inset-0.bg-black\/60 .bg-surface textarea {
+  color: #ffffff !important;
+}
+
+.dark div.fixed.inset-0.bg-black\/60 .text-on-surface-variant {
+  color: #94a3b8 !important;
+}
+
+.dark div.fixed.inset-0.bg-black\/60 select {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  background-color: #1f2937 !important;
+  color: #ffffff !important;
+}
+
+.dark div.fixed.inset-0.bg-black\/60 input,
+.dark div.fixed.inset-0.bg-black\/60 textarea {
+  background-color: #1f2937 !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+}
+
+/* Elements state adjustments */
+.dark .text-slate-900 {
+  color: #ffffff !important;
+}
+
+.dark .text-slate-800 {
+  color: #f1f5f9 !important;
+}
+
+.dark .text-slate-700 {
+  color: #cbd5e1 !important;
+}
+
+.dark .text-slate-600 {
+  color: #94a3b8 !important;
+}
+
+.dark .text-slate-500 {
+  color: #6b7280 !important;
+}
+
+.dark .bg-slate-50,
+.dark .bg-slate-100,
+.dark .bg-slate-200,
+.dark .bg-slate-300,
+.dark .bg-blue-50,
+.dark .bg-[#eff6ff] {
+  background-color: #1f2937 !important;
+  color: #ffffff !important;
+}
+
+.dark .border-slate-100,
+.dark .border-slate-200,
+.dark .border-slate-300 {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.dark .text-on-surface {
+  color: #f1f5f9 !important;
+}
+
+.dark .bg-white {
+  background-color: #111827 !important;
+}
+
+/* Toggle element borders */
+.dark .border {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Fix bento-specific values in charts & cards */
+.dark .text-gray-900,
+.dark .text-gray-800 {
+  color: #ffffff !important;
+}
+
+.dark .text-gray-500,
+.dark .text-gray-400 {
+  color: #94a3b8 !important;
+}
+
+.dark #orders-summary-section > div {
+  background: #111827 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.dark .bg-slate-50/50 {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+.dark .hover\:bg-slate-50\/80:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.dark .hover\:bg-slate-50:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.dark .bg-indigo-50 {
+  background-color: rgba(99, 102, 241, 0.15) !important;
+}
+
+.dark .text-indigo-600 {
+  color: #818cf8 !important;
+}
+
+.dark .border-indigo-150 {
+  border-color: rgba(99, 102, 241, 0.3) !important;
+}
+
+.dark .divide-y > * {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Print CSS Styles */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .no-print, 
+  header, 
+  nav, 
+  aside,
+  main > div:not(.print-container) {
+    display: none !important;
+  }
+  
+  .print-content {
+    display: block !important;
+  }
+}
+
+
